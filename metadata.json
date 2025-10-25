@@ -1,0 +1,5 @@
+{
+  "name": "Kennisbank AI Assistent",
+  "description": "Een conversationele chatbot die antwoorden geeft op basis van een verstrekte kennisbank. De AI redeneert uitsluitend over de specifieke informatie die u uploadt om contextuele en nauwkeurige antwoorden te geven.",
+  "requestFramePermissions": []
+}
