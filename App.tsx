@@ -65,10 +65,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen flex flex-col items-center justify-center p-4 font-sans">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 font-sans">
       <div className="w-full h-[95vh] max-w-4xl flex flex-col bg-gray-800/50 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
         <header className="flex items-center justify-between p-4 bg-gray-900/70 border-b border-gray-700">
-          <h1 className="text-xl font-bold text-white">ORBINITE® Gids</h1>
+          <h1 className="text-xl font-bold text-white">ORBINITE® AI</h1>
           <button 
             onClick={resetChat} 
             className="flex items-center gap-2 text-sm text-gray-300 hover:text-white bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded-lg transition-colors"

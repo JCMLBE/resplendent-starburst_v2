@@ -23,7 +23,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage, isLoading })
       <div className="relative">
         <input
           type="text"
-          className="w-full bg-gray-700 text-white placeholder-gray-400 border border-gray-600 rounded-full py-3 pl-5 pr-14 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          className="w-full bg-gray-700 text-white placeholder-gray-400 border border-gray-600 rounded-full py-3 pl-5 pr-14 focus:outline-none focus:ring-2 focus:ring-highlight transition duration-200"
           placeholder={isLoading ? 'Aan het denken...' : 'Stel een vraag...'}
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -32,7 +32,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage, isLoading })
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-500 disabled:cursor-not-allowed text-white rounded-full p-2.5 transition duration-200"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-highlight hover:bg-highlight-hover disabled:bg-gray-500 disabled:cursor-not-allowed text-white rounded-full p-2.5 transition duration-200"
           aria-label="Verstuur bericht"
         >
           <SendIcon />
