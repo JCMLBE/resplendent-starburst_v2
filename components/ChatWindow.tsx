@@ -9,8 +9,8 @@ interface MessageBubbleProps {
 
 const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     const isUser = message.role === 'user';
-    const bubbleClasses = isUser 
-        ? 'bg-blue-600 text-white self-end' 
+    const bubbleClasses = isUser
+        ? 'bg-highlight text-white self-end'
         : 'bg-gray-700 text-gray-200 self-start';
     
     const containerClasses = isUser
