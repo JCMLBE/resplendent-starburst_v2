@@ -19,11 +19,11 @@ const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage, isLoading })
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-gray-800/50 backdrop-blur-sm border-t border-gray-700">
+    <form onSubmit={handleSubmit} className="p-4 bg-[#00e0d4] backdrop-blur-sm border-t border-gray-700">
       <div className="relative">
         <input
           type="text"
-          className="w-full bg-gray-700 text-white placeholder-gray-400 border border-gray-600 rounded-full py-3 pl-5 pr-14 focus:outline-none focus:ring-2 focus:ring-highlight transition duration-200"
+          className="w-full bg-white text-gray-900 placeholder-gray-500 border border-gray-300 rounded-full py-3 pl-5 pr-14 focus:outline-none focus:ring-2 focus:ring-highlight transition duration-200"
           placeholder={isLoading ? 'Aan het denken...' : 'Stel een vraag...'}
           value={input}
           onChange={(e) => setInput(e.target.value)}

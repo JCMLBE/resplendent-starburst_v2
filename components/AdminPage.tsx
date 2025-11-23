@@ -22,8 +22,8 @@ const AdminPage: React.FC = () => {
     setIsLoading(true);
     try {
       const [kbResponse, siResponse] = await Promise.all([
-        fetch('/api/admin/get-knowledge-base'),
-        fetch('/api/admin/get-system-instructions')
+        fetch('/api/admin-get-knowledge-base'),
+        fetch('/api/admin-get-system-instructions')
       ]);
 
       if (kbResponse.ok) {
@@ -48,7 +48,7 @@ const AdminPage: React.FC = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/admin/authenticate', {
+      const response = await fetch('/api/admin-authenticate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password })
@@ -76,7 +76,7 @@ const AdminPage: React.FC = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/admin/update-knowledge-base', {
+      const response = await fetch('/api/admin-update-knowledge-base', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: knowledgeBase })
@@ -101,7 +101,7 @@ const AdminPage: React.FC = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/admin/update-system-instructions', {
+      const response = await fetch('/api/admin-update-system-instructions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ instructions: systemInstructions })
