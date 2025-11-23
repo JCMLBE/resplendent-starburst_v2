@@ -1,5 +1,5 @@
 import { getStore } from '@netlify/blobs';
-import { knowledgeBaseContent } from '../../knowledge_base_content';
+import { systemInstructions } from '../system_instructions';
 
 export default async (req: Request) => {
   if (req.method !== 'GET') {
@@ -8,12 +8,12 @@ export default async (req: Request) => {
 
   try {
     const store = getStore('admin-config');
-    const updatedContent = await store.get('knowledge_base');
+    const updatedInstructions = await store.get('system_instructions');
 
-    // Return updated content from blob if exists, otherwise return default
-    const content = updatedContent || knowledgeBaseContent;
+    // Return updated instructions from blob if exists, otherwise return default
+    const instructions = updatedInstructions || systemInstructions;
 
-    return new Response(JSON.stringify({ content }), {
+    return new Response(JSON.stringify({ instructions }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
