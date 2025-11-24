@@ -28,13 +28,13 @@ export const ResetIcon = () => (
 );
 
 export const UserIcon = () => (
-  <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+  <div className="w-8 h-8 rounded-full bg-[#00e0d4] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
     U
   </div>
 );
 
 export const BotIcon = () => (
-  <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+  <div className="w-8 h-8 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
     AI
   </div>
 );

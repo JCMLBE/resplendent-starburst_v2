@@ -19,11 +19,11 @@ const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage, isLoading })
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-[#00e0d4] backdrop-blur-sm border-t border-gray-700">
+    <form onSubmit={handleSubmit} className="p-4 bg-white backdrop-blur-sm border-t border-[#00e0d4]">
       <div className="relative">
         <input
           type="text"
-          className="w-full bg-white text-gray-900 placeholder-gray-500 border border-gray-300 rounded-full py-3 pl-5 pr-14 focus:outline-none focus:ring-2 focus:ring-highlight transition duration-200"
+          className="w-full bg-gray-50 text-gray-900 placeholder-gray-400 border border-[#00e0d4]/50 rounded-full py-3 pl-5 pr-14 focus:outline-none focus:ring-2 focus:ring-[#00e0d4] transition duration-200"
           placeholder={isLoading ? 'Aan het denken...' : 'Stel een vraag...'}
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -32,7 +32,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage, isLoading })
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-highlight hover:bg-highlight-hover disabled:bg-gray-500 disabled:cursor-not-allowed text-white rounded-full p-2.5 transition duration-200"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#00e0d4] hover:bg-[#00c9be] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-full p-2.5 transition duration-200"
           aria-label="Verstuur bericht"
         >
           <SendIcon />

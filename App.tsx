@@ -65,13 +65,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 font-sans">
-      <div className="w-full h-[95vh] max-w-4xl flex flex-col bg-white backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
-        <header className="flex items-center justify-between p-4 bg-[#00e0d4] border-b border-gray-700">
-          <h1 className="text-xl font-bold text-white">ORBINITE® AI</h1>
-          <button 
-            onClick={resetChat} 
-            className="flex items-center gap-2 text-sm text-gray-300 hover:text-white bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded-lg transition-colors"
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 font-sans" style={{ background: 'transparent' }}>
+      <div className="w-full h-[95vh] max-w-4xl flex flex-col bg-white backdrop-blur-xl rounded-2xl shadow-2xl border border-[#00e0d4] overflow-hidden">
+        <header className="flex items-center justify-between p-4 bg-white border-b border-[#00e0d4]">
+          <h1 className="text-xl font-bold text-[#00e0d4]">ORBINITE® AI</h1>
+          <button
+            onClick={resetChat}
+            className="flex items-center gap-2 text-sm text-[#00e0d4] hover:text-[#00c9be] bg-[#00e0d4]/10 hover:bg-[#00e0d4]/20 px-3 py-1.5 rounded-lg transition-colors border border-[#00e0d4]"
             title="Start een nieuwe chat"
           >
             <ResetIcon />
