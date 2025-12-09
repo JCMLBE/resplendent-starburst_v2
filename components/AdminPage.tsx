@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 // Initialiseer PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 // Import UploadIcon component manually since we cannot easily import it from icons.tsx if not exported or if we want to avoid circular deps. 
 // Assuming icons.tsx has it, we should try to import it.
@@ -212,58 +213,58 @@ const AdminPage: React.FC = () => {
                 className="w-full h-64 px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:border-highlight font-mono text-sm"
                 disabled={isLoading}
               />
-              
-              <div className="mt-4 flex items-center gap-4">
-                  <label 
-                      className={`flex items-center gap-2 bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition-colors ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  >
-                      <UploadIcon />
-                      <span>Upload Bestand (.txt, .pdf)</span>
-                      <input 
-                          type="file" 
-                          accept=".txt,application/pdf"
-                          onChange={async (e) => {
-                              const file = e.target.files?.[0];
-                              if (!file) return;
 
-                              setIsLoading(true);
-                              setError('');
-                              
-                              try {
-                                  if (file.type === 'application/pdf') {
-                                      const arrayBuffer = await file.arrayBuffer();
-                                      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-                                      let fullText = '';
-                                      
-                                      for (let i = 1; i <= pdf.numPages; i++) {
-                                          const page = await pdf.getPage(i);
-                                          const textContent = await page.getTextContent();
-                                          const pageText = textContent.items.map((item: any) => item.str).join(' ');
-                                          fullText += pageText + '\n\n';
-                                      }
-                                      
-                                      setKnowledgeBase(prev => prev + (prev ? '\n\n' : '') + fullText.trim());
-                                      setMessage(`PDF "${file.name}" succesvol toegevoegd!`);
-                                  } else {
-                                      // Default to text handling
-                                      const text = await file.text();
-                                      setKnowledgeBase(prev => prev + (prev ? '\n\n' : '') + text.trim());
-                                      setMessage(`Bestand "${file.name}" succesvol toegevoegd!`);
-                                  }
-                              } catch (err: any) {
-                                  console.error('File upload error:', err);
-                                  setError('Fout bij het lezen van bestand: ' + err.message);
-                              } finally {
-                                  setIsLoading(false);
-                                  // Reset input
-                                  e.target.value = '';
-                              }
-                          }}
-                          disabled={isLoading}
-                          className="hidden"
-                      />
-                  </label>
-                  <span className="text-gray-400 text-sm">Voegt inhoud toe aan bestaande tekst</span>
+              <div className="mt-4 flex items-center gap-4">
+                <label
+                  className={`flex items-center gap-2 bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg cursor-pointer transition-colors ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                  <UploadIcon />
+                  <span>Upload Bestand (.txt, .pdf)</span>
+                  <input
+                    type="file"
+                    accept=".txt,application/pdf"
+                    onChange={async (e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+
+                      setIsLoading(true);
+                      setError('');
+
+                      try {
+                        if (file.type === 'application/pdf') {
+                          const arrayBuffer = await file.arrayBuffer();
+                          const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                          let fullText = '';
+
+                          for (let i = 1; i <= pdf.numPages; i++) {
+                            const page = await pdf.getPage(i);
+                            const textContent = await page.getTextContent();
+                            const pageText = textContent.items.map((item: any) => item.str).join(' ');
+                            fullText += pageText + '\n\n';
+                          }
+
+                          setKnowledgeBase(prev => prev + (prev ? '\n\n' : '') + fullText.trim());
+                          setMessage(`PDF "${file.name}" succesvol toegevoegd!`);
+                        } else {
+                          // Default to text handling
+                          const text = await file.text();
+                          setKnowledgeBase(prev => prev + (prev ? '\n\n' : '') + text.trim());
+                          setMessage(`Bestand "${file.name}" succesvol toegevoegd!`);
+                        }
+                      } catch (err: any) {
+                        console.error('File upload error:', err);
+                        setError('Fout bij het lezen van bestand: ' + err.message);
+                      } finally {
+                        setIsLoading(false);
+                        // Reset input
+                        e.target.value = '';
+                      }
+                    }}
+                    disabled={isLoading}
+                    className="hidden"
+                  />
+                </label>
+                <span className="text-gray-400 text-sm">Voegt inhoud toe aan bestaande tekst</span>
               </div>
 
               <button
