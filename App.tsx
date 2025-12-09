@@ -17,7 +17,7 @@ const App: React.FC = () => {
     ]);
     setIsInitialized(true);
   }, []);
-  
+
   const handleSendMessage = useCallback(async (message: string) => {
     if (isLoading || !isInitialized) return;
 
@@ -55,7 +55,7 @@ const App: React.FC = () => {
       setIsLoading(false);
     }
   }, [chatHistory, isLoading, isInitialized]);
-  
+
   const resetChat = () => {
     setChatHistory([
       { role: 'model', content: 'Hallo! Waarmee kan ik je helpen? Wat zou je willen weten over Orbinite?' }
@@ -66,7 +66,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 font-sans" style={{ background: 'transparent' }}>
-      <div className="w-full h-[95vh] max-w-4xl flex flex-col bg-white backdrop-blur-xl rounded-2xl shadow-2xl border border-[#00e0d4] overflow-hidden">
+      <div className="w-full h-[95vh] max-w-4xl flex flex-col bg-white backdrop-blur-xl rounded-2xl border border-[#00e0d4] overflow-hidden">
         <header className="flex items-center justify-between p-4 bg-white border-b border-[#00e0d4]">
           <h1 className="text-xl font-bold text-[#00e0d4]">ORBINITE® AI</h1>
           <button
